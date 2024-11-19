@@ -54,15 +54,17 @@ class InteractiveDataViewer:
             self._display_row()
 
     def display(self):
-        """Create and display the interactive widget with persistent buttons."""
+        """Create and display the interactive widget with persistent buttons at the top and bottom."""
+        # Create navigation buttons
         next_button = widgets.Button(description="Next")
         prev_button = widgets.Button(description="Previous")
 
         next_button.on_click(self._next)
         prev_button.on_click(self._previous)
 
-        # Display the initial row
-        self._display_row()
+        # Navigation button layout
+        button_box = widgets.HBox([prev_button, next_button])
 
-        # Display the buttons and output area
-        display(widgets.VBox([self.output_area, widgets.HBox([prev_button, next_button])]))
+        # Display the buttons, output area, and a second set of buttons
+        self._display_row()
+        display(widgets.VBox([button_box, self.output_area, button_box]))

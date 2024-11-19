@@ -39,7 +39,9 @@ class InteractiveDataViewer:
             content = f"### Row {self.current_index + 1}/{len(self.data)}\n\n"
             for col in self.columns:
                 content += f"### {col}:\n{row[col]}\n\n---\n\n"
+            content += f"### Row {self.current_index + 1}/{len(self.data)}\n\n"
             display(Markdown(content))
+
 
     def _next(self, b):
         """Move to the next row."""
